@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import SearchBar from './components/searchbar';
-import CountriesDisplay from './components/countries';
+import CountriesDisplay from './components/countriesdisplay';
 
 function App() {
   const [ countries, setCountries ] = useState(null);

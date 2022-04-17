@@ -41,6 +41,10 @@ const Countries = ({ countriesData }) => {
         <span style={{fontSize: 100}}>{country.flag}</span>
       </div>
     );
+  } else {
+    return (
+      <p>No results for current filter</p>
+    )
   }
 };
 
