@@ -1,15 +1,25 @@
-import logo from './logo.svg';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import SearchBar from './components/searchbar';
+import CountriesDisplay from './components/countries';
 
 function App() {
   const [ countries, setCountries ] = useState(null);
-  const [ filterBy, setFilterBy ] = useState('');
+  const [ filteredCountries, setFilteredCountries ] = useState(null);
+
+  const filterCountries = (filter) => {
+    return countries.filter(country => country.name.common.includes(filter));
+  };
 
   const handleFilterChange = (event) => {
-    setFilterBy(event.target.value);
+    const currentFilterText = event.target.value;
+
+    if (currentFilterText === '') {
+      setFilteredCountries(null);
+    } else {
+      setFilteredCountries(filterCountries(currentFilterText));
+    }
   };
 
   useEffect(() => {
@@ -26,7 +36,7 @@ function App() {
         placeholder="Type to filter..."
         onChange={handleFilterChange}
       />
-      {/* <Countries /> */}
+      <CountriesDisplay countriesData={filteredCountries} />
     </div>
   );
 }
