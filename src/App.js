@@ -9,7 +9,7 @@ function App() {
   const [ filteredCountries, setFilteredCountries ] = useState(null);
 
   const filterCountries = (filter) => {
-    return countries.filter(country => country.name.common.includes(filter));
+    return countries.filter(country => country.name.common.toLowerCase().includes(filter.toLowerCase()));
   };
 
   const handleFilterChange = (event) => {
