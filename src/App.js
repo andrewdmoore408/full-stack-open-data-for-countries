@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import './App.css';
+
 import SearchBar from './components/searchbar';
 import CountriesDisplay from './components/countriesdisplay';
 
@@ -22,6 +24,12 @@ function App() {
     }
   };
 
+  const handleShowCountry = (event) => {
+    const selectedCountry = countries.find(country => country.name.common === event.target.getAttribute('countryname'));
+
+    setFilteredCountries([selectedCountry]);
+  };
+
   useEffect(() => {
     axios
     .get('http://restcountries.com/v3.1/all')
@@ -36,7 +44,10 @@ function App() {
         placeholder="Type to filter..."
         onChange={handleFilterChange}
       />
-      <CountriesDisplay countriesData={filteredCountries} />
+      <CountriesDisplay
+        countriesData={filteredCountries}
+        handleShowCountry={handleShowCountry}
+        />
     </div>
   );
 }

@@ -8,7 +8,7 @@ const CountryDetail = ({ country }) => {
       <p><strong>Languages:</strong></p>
       <ul>
         {Object.entries(country.languages)
-          .map(language => <li>{language[1]}</li>)}
+          .map((language, index) => <li key={index}>{language[1]}</li>)}
       </ul>
       <span style={{ fontSize: 100 }}>{country.flag}</span>
     </div>

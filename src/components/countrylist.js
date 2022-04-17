@@ -1,4 +1,4 @@
-const CountryList = ({ countries }) => {
+const CountryList = ({ countries, handleShowCountry }) => {
   const alphaSort = (a, b) => {
     if (a < b) {
       return -1;
@@ -14,7 +14,22 @@ const CountryList = ({ countries }) => {
       {countries
         .map(country => country.name.common)
         .sort(alphaSort)
-        .map(countryName => <p>{countryName}</p>)
+        .map((countryName, index) => {
+          return (
+            <>
+              <p key={index}>
+                {countryName}
+                <button
+                  type="button"
+                  countryname={countryName}
+                  onClick={handleShowCountry}
+                >
+                  Show
+                </button>
+              </p>
+            </>
+          );
+        })
       }
     </>
   );

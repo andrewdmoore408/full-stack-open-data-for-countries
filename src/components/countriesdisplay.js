@@ -1,7 +1,7 @@
 import CountryDetail from './countrydetail';
 import CountryList from './countrylist';
 
-const CountriesDisplay = ({ countriesData }) => {
+const CountriesDisplay = ({ countriesData, handleShowCountry }) => {
   if (countriesData === null) {
     return (<></>);
   } else if (countriesData.length > 10) {
@@ -12,6 +12,7 @@ const CountriesDisplay = ({ countriesData }) => {
     return (
       <CountryList
         countries={countriesData}
+        handleShowCountry={handleShowCountry}
       />
     );
   } else if (countriesData.length === 1) {
