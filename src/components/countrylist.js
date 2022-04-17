@@ -10,14 +10,14 @@ const CountryList = ({ countries, handleShowCountry }) => {
   };
 
   return (
-    <>
+    <ul>
       {countries
         .map(country => country.name.common)
         .sort(alphaSort)
         .map((countryName, index) => {
           return (
             <>
-              <p key={index}>
+              <li key={index}>
                 {countryName}
                 <button
                   type="button"
@@ -26,12 +26,12 @@ const CountryList = ({ countries, handleShowCountry }) => {
                 >
                   Show
                 </button>
-              </p>
+              </li>
             </>
           );
         })
       }
-    </>
+    </ul>
   );
 }
 
